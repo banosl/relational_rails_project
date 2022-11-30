@@ -1,5 +1,8 @@
 <h1>List of States</h1>
 
-<ul>State 1</ul>
+<ul><% @states.each do |state| %>
+  <h3><%= state.name %></h3>
+  <% end %>
+</ul>
 
 <a href="/">Home</a>

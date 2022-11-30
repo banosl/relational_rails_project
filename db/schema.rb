@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2022_11_30_020609) do
     t.float "population"
     t.float "gdp"
     t.float "size"
-    t.boolean "coastal"
+    t.boolean "coast"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
