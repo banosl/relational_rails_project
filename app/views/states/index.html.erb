@@ -1,3 +1,8 @@
 <h1>List of States</h1>
 
+<ul><% @states.each do |state| %>
+  <h3><a href="/states/<%= state.id %>"><%= state.name %></a></h3>
+  <% end %>
+</ul>
+
 <a href="/">Home</a>
