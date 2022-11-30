@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "States Index" do
+RSpec.describe "States Index", type: :feature do
   describe "As a visitor when I visit '/states'" do
     it "see the name of each state record in the system" do
       washington = State.create!(name:"Washington", 
@@ -19,11 +19,11 @@ RSpec.describe "States Index" do
                                size:163696, 
                                coastal:true)
       visit '/states'
-      save_and_open_page
+    #   save_and_open_page
 
-      expect(page).to have_content("Washington")
-      expect(page).to have_content("Colorado")
-      expect(page).to have_content("California")
+      expect(page).to have_content(washington.name)
+      expect(page).to have_content(colorado.name)
+      expect(page).to have_content(california.name)
       expect(page).to_not have_content("New York")
     end
   end
