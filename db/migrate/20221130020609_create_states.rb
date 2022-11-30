@@ -5,7 +5,7 @@ class CreateStates < ActiveRecord::Migration[5.2]
       t.float :population
       t.float :gdp
       t.float :size
-      t.boolean :coast
+      t.boolean :coastal
 
       t.timestamps
     end
