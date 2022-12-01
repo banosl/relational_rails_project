@@ -20,7 +20,7 @@ RSpec.describe "States Show", type: :feature do
         coastal:true)
 
         visit "/states/#{washington.id}"
-        save_and_open_page
+        # save_and_open_page
 
         expect(page).to have_content(washington.name)
         expect(page).to have_content(washington.population)
