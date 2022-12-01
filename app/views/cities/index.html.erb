@@ -1,0 +1,14 @@
+<h1>List of Cities</h1>
+
+<ul><% @cities.each do |city| %>
+  <h3><%= city.name %></h3>
+  <p><%=city.population %></p>
+  <p><%=city.owner_occupied_housing_unit_rate %></p>
+  <p><%=city.form_of_gov %></p>
+  <p><%=city.size %></p>
+  <p><%=city.median_household_income %></p>
+  <p><%=city.public_transit %></p>
+  <% end %>
+</ul>
+
+<a href="/">Home</a>
