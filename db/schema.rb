@@ -17,16 +17,12 @@ ActiveRecord::Schema.define(version: 2022_12_01_041956) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
-    t.string "string"
-    t.string "population"
-    t.string "integer"
-    t.string "owner_occupied_housing_unit_rate"
-    t.string "float"
+    t.integer "population"
+    t.float "owner_occupied_housing_unit_rate"
     t.string "form_of_gov"
-    t.string "size"
-    t.string "median_household_income"
-    t.string "public_transit"
-    t.string "boolean"
+    t.float "size"
+    t.integer "median_household_income"
+    t.boolean "public_transit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
