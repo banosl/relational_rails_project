@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_30_223550) do
+ActiveRecord::Schema.define(version: 2022_12_01_041956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.string "string"
+    t.string "population"
+    t.string "integer"
+    t.string "owner_occupied_housing_unit_rate"
+    t.string "float"
+    t.string "form_of_gov"
+    t.string "size"
+    t.string "median_household_income"
+    t.string "public_transit"
+    t.string "boolean"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "states", force: :cascade do |t|
     t.string "name"
