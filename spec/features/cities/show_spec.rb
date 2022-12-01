@@ -27,7 +27,7 @@ RSpec.describe "Cities Show", type: :feature do
         expect(page).to have_content("Form of Government: #{seattle.form_of_gov}")
         expect(page).to have_content("Median Household Income (in 2020 Dollars), 2016-2020: $#{seattle.median_household_income}")
         expect(page).to have_content("Has public transportation: #{seattle.public_transit}")
-        expect(page).to have_content("Size in mi^2: #{seattle.size}")
+        expect(page).to have_content("Size in: #{seattle.size} mi^2")
         expect(page).to_not have_content(spokane.name)
         expect(page).to_not have_content(spokane.population)
     end
