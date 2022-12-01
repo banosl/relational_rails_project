@@ -9,7 +9,7 @@ RSpec.describe City, type: :model do
         size: 83.78, 
         median_household_income: 97185, 
         public_transit: true)
-binding.pry
+
     expect(seattle.name).to eq("Seattle")
     expect(seattle.population).to eq(733919)
     expect(seattle.owner_occupied_housing_unit_rate).to eq(44.9)
