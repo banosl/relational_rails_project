@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/states/:id', to: 'states#show'
   get '/cities', to: 'cities#index'
   get '/cities/:id', to: 'cities#show'
+  get '/states/:state_id/cities', to: 'state_cities#index'
 end
