@@ -18,6 +18,10 @@ RSpec.describe City, type: :model do
     state_id: @washington.id)
   end
 
+  describe 'relationships' do
+    it {should belong_to :state}
+  end
+
   it 'city has attributes' do
 
     expect(@seattle.name).to eq("Seattle")
