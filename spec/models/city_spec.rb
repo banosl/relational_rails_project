@@ -31,7 +31,9 @@ RSpec.describe City, type: :model do
   end
 
   describe "#state" do
-    xit "returns the associated state" do
+    it "returns the associated state" do
+      
+      expect(@seattle.state).to eq(@washington)
 
     end
   end
