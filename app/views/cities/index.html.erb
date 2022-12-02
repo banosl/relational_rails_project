@@ -1,0 +1,14 @@
+<h1>List of Cities</h1>
+
+<ul><% @cities.each do |city| %>
+  <h3><%= city.name %></h3>
+  <p>Population Estimates, July 1, 2021: <%=city.population %></p>
+  <p>Owner Occupied Housing Unit Rate, 2016-2020: <%=city.owner_occupied_housing_unit_rate %>%</p>
+  <p>Form of Government: <%=city.form_of_gov %></p>
+  <p>Size in mi^2: <%=city.size %></p>
+  <p>Median Household Income (in 2020 Dollars), 2016-2020: $<%=city.median_household_income %></p>
+  <p>Has public transportation: <%=city.public_transit %></p>
+  <% end %>
+</ul>
+
+<a href="/">Home</a>
