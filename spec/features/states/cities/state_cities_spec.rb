@@ -36,23 +36,24 @@ RSpec.describe "State's City Index", type: :feature do
     end
   
     describe "When I visit states/:state_id/city" do
-    it "See each city that is associated with the state" do
-        
+      it "See each city that is associated with the state" do
         visit "/states/#{@washington.id}/cities"
-        save_and_open_page
+        # save_and_open_page
 
         expect(page).to have_content(@seattle.name)
         expect(page).to have_content(@spokane.name)
         expect(page).to_not have_content(@denver.name)
-    end
+      end
 
-    it "See each city's attributes"
-        
-        # expect(page).to have_content("Population Estimates, July 1, 2021: #{@seattle.population}")
-        # expect(page).to have_content("Owner Occupied Housing Unit Rate, 2016-2020: #{@seattle.owner_occupied_housing_unit_rate}%")
-        # expect(page).to have_content("Population Estimates, July 1, 2021: #{@spokane.population}")
-        # expect(page).to have_content("Owner Occupied Housing Unit Rate, 2016-2020: #{@spokane.owner_occupied_housing_unit_rate}%")
-        # expect(page).to have_content("Form of Government: #{@spokane.form_of_gov}")
-        # expect(page).to_not have_content(@denver.population)
-  end
+     it "See each city's attributes" do
+       visit "/states/#{@washington.id}/cities"
+       
+       expect(page).to have_content("Population Estimates, July 1, 2021: #{@seattle.population}")
+       expect(page).to have_content("Owner Occupied Housing Unit Rate, 2016-2020: #{@seattle.owner_occupied_housing_unit_rate}%")
+       expect(page).to have_content("Population Estimates, July 1, 2021: #{@spokane.population}")
+       expect(page).to have_content("Owner Occupied Housing Unit Rate, 2016-2020: #{@spokane.owner_occupied_housing_unit_rate}%")
+       expect(page).to have_content("Form of Government: #{@spokane.form_of_gov}")
+       expect(page).to_not have_content(@denver.population)
+     end
+    end
 end
