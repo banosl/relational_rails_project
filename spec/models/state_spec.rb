@@ -22,17 +22,6 @@ RSpec.describe State, type: :model do
     it {should have_many :cities}
     
   end
-
-  xit 'state is organized by created_at in descending order' do
-    colorado = State.create!(name: "Colorado",
-      population: 5.812,
-      gdp: 373.76,
-      size: 104185.0,
-      coastal: false,)
-    washington = State.create!(name:"Washington", population:7.739, gdp:577.2, size:71362, coastal:true)
-
-    binding.pry
-  end
 end
 
 
