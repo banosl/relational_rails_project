@@ -90,7 +90,7 @@ RSpec.describe "States Show", type: :feature do
       click_link "Update State"
 
       expect(page.current_url).to eq("http://www.example.com/states/#{@washington.id}/edit")
-      expect(page).to have_content("Update the State's Record")
+      expect(page).to have_content("Update the #{@washington.name} State Record")
     end
   end
 end

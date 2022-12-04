@@ -34,7 +34,7 @@ RSpec.describe "States Edit", type: :feature do
       fill_in 'State[size]', with: '121325197'
       click_button 'Update State'
 
-      expect(page).to have_content("#{@washington.id}")
+      expect(page).to have_content("#{@washington.name}")
       expect(page).to have_content("State Size: 121325197")
     end
 

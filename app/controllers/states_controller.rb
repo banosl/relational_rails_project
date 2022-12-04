@@ -27,4 +27,16 @@ class StatesController < ApplicationController
   def edit
     @state = State.find(params[:id])
   end
+
+  def update
+    @state = State.find(params[:id])
+    @state.update({
+      name: params[:State][:name],
+      population: params[:State][:population],
+      gdp: params[:State][:gdp],
+      size: params[:State][:size],
+      coastal: params[:State][:coastal]})
+    @state.save
+    redirect_to "/states/#{@state.id}"
+  end
 end
