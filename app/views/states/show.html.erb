@@ -10,6 +10,8 @@
 <li>Total number of cities: <%= @state.count %></li>
 </ul>
 
+<a href="/states/<%= @state.id %>/edit">Update State</a>
+
 <h3> Cities </h3>
 <ul>
 <% @state.cities.each do |city| %>
