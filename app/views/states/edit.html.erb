@@ -1,0 +1,17 @@
+<h1>Update the <%= @state.name %> State Record</h1>
+<p>Leave blank if no changes are being made to that field.</p>
+<form action="/states" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <h5>Name:</h5>
+  <input type='text' name='State[name]'/><br/>
+  <h5>Population:</h5>
+  <input type='text' name='State[population]'/><br/>
+  <h5>GDP:</h5>
+  <input type='text' name='State[gdp]'/><br/>
+  <h5>Size:</h5>
+  <input type='text' name='State[size]'/><br/>
+  <h5>Is it a coastal state?:</h5>
+  <input type='text' name='State[coastal]'/><br/>
+  <br/><input type='submit' name='Update State'/>
+</form>

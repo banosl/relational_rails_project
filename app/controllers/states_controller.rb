@@ -25,6 +25,6 @@ class StatesController < ApplicationController
   end
 
   def edit
-
+    @state = State.find(params[:id])
   end
 end
