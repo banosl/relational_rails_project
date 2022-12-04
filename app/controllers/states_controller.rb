@@ -11,5 +11,16 @@ class StatesController < ApplicationController
   end
 
   def create
+    state = State.new({
+      name: params[:State][:name],
+      population: params[:State][:population],
+      gdp: params[:State][:gdp],
+      size: params[:State][:size],
+      coastal: params[:State][:coastal]
+    })
+
+    state.save
+
+    redirect_to '/states'
   end
 end
