@@ -1,9 +1,18 @@
 <h1><%= @state.name %></h1>
+<a href="/states">All States</a> | <a href="/cities">All Cities</a> |
 
+<h3>State Facts</h3>
 <ul>
 <li>State Population: <%= @state.population %> million</li>
 <li>State GDP: <%= @state.gdp %></li>
 <li>State Size: <%= @state.size %> mi^2</li>
 <li>Is it a coastal state?: <%= @state.coastal %></li>
 <li>Total number of cities: <%= @state.count %></li>
+</ul>
+
+<h3> Cities </h3>
+<ul>
+<% @state.cities.each do |city| %>
+    <li> <a href="/cities/<%= city.id %>"> <%= city.name %> </a> </li>
+<% end %>
 </ul>

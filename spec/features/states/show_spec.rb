@@ -45,8 +45,6 @@ RSpec.describe "States Show", type: :feature do
         public_transit: true)
     end
     it "see the state with that id including the parent's attributes" do
-      
-
         visit "/states/#{@washington.id}"
         # save_and_open_page
 
@@ -61,9 +59,24 @@ RSpec.describe "States Show", type: :feature do
 
     it 'see a count of the number of cities for the state' do
       visit "/states/#{@washington.id}"
-      save_and_open_page
       expect(page).to have_content("Total number of cities: #{@washington.count}")
     end
 
+    it "see a link at the top of the page that goes to cities index" do
+      visit "/states/#{@washington.id}"
+      expect(page).to have_link("All Cities", :href => "/cities")
+    end
+
+    it "see a link at the top of the page that goes to states index" do
+      visit "/states/#{@washington.id}"
+      expect(page).to have_link("All States", :href => "/states")
+    end
+
+    it "see link to each of the state's cities" do
+      visit "/states/#{@washington.id}"
+
+      expect(page).to have_link("#{@seattle.name}", :href => "/cities/#{@seattle.id}")
+      expect(page).to have_link("#{@spokane.name}", :href => "/cities/#{@spokane.id}")
+    end
   end
 end
