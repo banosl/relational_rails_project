@@ -66,5 +66,10 @@ RSpec.describe "States Show", type: :feature do
       visit "/states/#{@washington.id}"
       expect(page).to have_link("All Cities", :href => "/cities")
     end
+
+    it "see a link at the top of the page that goes to cities index" do
+      visit "/states/#{@washington.id}"
+      expect(page).to have_link("All States", :href => "/states")
+    end
   end
 end
