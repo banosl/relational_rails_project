@@ -62,5 +62,17 @@ RSpec.describe "States Index", type: :feature do
       visit "/states"
       expect(page).to have_link("All Cities", :href => "/cities")
     end
+
+    it "see a link to create a new state record, 'Add State'" do
+      visit "/states"
+      expect(page).to have_link("Add State", :href => "/states/new")
+    end
+
+    it "when 'Add State' link is clicked user is taken to a /states/new" do
+      visit "/states"
+      click_link "Add State"
+save_and_open_page
+      expect(page.current_url).to eq("/states/new")
+    end
   end
 end
