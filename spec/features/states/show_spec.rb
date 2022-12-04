@@ -45,8 +45,6 @@ RSpec.describe "States Show", type: :feature do
         public_transit: true)
     end
     it "see the state with that id including the parent's attributes" do
-      
-
         visit "/states/#{@washington.id}"
         # save_and_open_page
 
