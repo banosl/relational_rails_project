@@ -23,4 +23,8 @@ class StatesController < ApplicationController
 
     redirect_to '/states'
   end
+
+  def edit
+
+  end
 end
