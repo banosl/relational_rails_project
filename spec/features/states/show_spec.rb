@@ -59,9 +59,12 @@ RSpec.describe "States Show", type: :feature do
 
     it 'see a count of the number of cities for the state' do
       visit "/states/#{@washington.id}"
-      save_and_open_page
       expect(page).to have_content("Total number of cities: #{@washington.count}")
     end
 
+    it "see a link at the top of the page that goes to cities index" do
+      visit "/states/#{@washington.id}"
+      expect(page).to have_link("All Cities", :href => "/cities")
+    end
   end
 end

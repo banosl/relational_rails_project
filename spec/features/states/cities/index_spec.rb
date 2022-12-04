@@ -55,5 +55,11 @@ RSpec.describe "State's City Index", type: :feature do
        expect(page).to have_content("Form of Government: #{@spokane.form_of_gov}")
        expect(page).to_not have_content(@denver.population)
      end
+
+     it "see a link at the top of the page that goes to cities index" do
+      visit "/states/#{@washington.id}/cities"
+      save_and_open_page
+      expect(page).to have_link("All Cities", :href => "/cities")
+    end
     end
 end
