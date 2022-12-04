@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/states', to: 'states#create'
   get '/states/:id', to: 'states#show'
   get '/states/:id/edit', to: 'states#edit'
+  patch '/states/:id', to: 'states#update'
 
   get '/cities', to: 'cities#index'
   get '/cities/:id', to: 'cities#show'

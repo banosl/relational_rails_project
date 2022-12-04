@@ -29,4 +29,13 @@ RSpec.describe "States Edit", type: :feature do
         expect(page).to have_field("State[coastal]")
     end
 
+    it "a state's info is updated and user is redirected to the state's show page" do
+      visit "/states/#{@washington.id}/edit"
+      fill_in 'State[size]', with: '121325197'
+      click_button 'Update State'
+
+      expect(page).to have_content("#{@washington.id}")
+      expect(page).to have_content("State Size: 121325197")
+    end
+
 end
