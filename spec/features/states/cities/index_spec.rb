@@ -65,5 +65,12 @@ RSpec.describe "State's City Index", type: :feature do
       visit "/states/#{@washington.id}/cities"
       expect(page).to have_link("All States", :href => "/states")
      end
+
+     it "see a link to add a new city for the state called 'Add City'" do
+      visit "/states/#{@washington.id}/cities"
+
+      expect(page).to have_link("Add City", :href => "/states/#{@washington.id}/cities/new")
+     end
+
     end
 end
