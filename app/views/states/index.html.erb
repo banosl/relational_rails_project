@@ -2,6 +2,7 @@
 
 <ul><% @states.each do |state| %>
   <h3><a href="/states/<%= state.id %>"><%= state.name %></a></h3>
+  <p>Created on <%= state.created_at %></p>
   <% end %>
 </ul>
 
