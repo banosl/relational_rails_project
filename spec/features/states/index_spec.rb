@@ -33,8 +33,6 @@ RSpec.describe "States Index", type: :feature do
 
     it "records are ordered by most recently created first" do
       visit '/states'
-      save_and_open_page
-binding.pry
       expect(page.body.index("California") < page.body.index("Washington")).to be(true)
     end
   end
