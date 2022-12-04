@@ -71,8 +71,9 @@ RSpec.describe "States Index", type: :feature do
     it "when 'Add State' link is clicked user is taken to a /states/new" do
       visit "/states"
       click_link "Add State"
-save_and_open_page
-      expect(page.current_url).to eq("/states/new")
+
+      expect(page.current_url).to eq("http://www.example.com/states/new")
+      expect(page).to have_content("Add a New State Record")
     end
   end
 end
