@@ -72,5 +72,13 @@ RSpec.describe "State's City Index", type: :feature do
       expect(page).to have_link("Add City", :href => "/states/#{@washington.id}/cities/new")
      end
 
+     it "when Add City link is clicked, user is taken to a new page to fill in fields for the new city" do
+      visit "/states/#{@washington.id}/cities"
+      click_link "Add City"
+
+      expect(page.current_url).to eq("http://www.example.com/states/#{@washington.id}/cities/new")
+      expect(page).to have_content("Add a New City Record for #{@washington.id} State")
+     end
+
     end
 end
