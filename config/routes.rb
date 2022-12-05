@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get '/cities', to: 'cities#index'
   get '/cities/:id', to: 'cities#show'
+  get '/cities/:id/new', to: 'cities#new'
+
   get '/states/:state_id/cities', to: 'state_cities#index'
   get '/states/:state_id/cities/new', to: 'state_cities#new'
   post '/states/:state_id/cities', to: 'state_cities#create'
