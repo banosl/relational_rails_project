@@ -11,13 +11,7 @@ class StatesController < ApplicationController
   end
 
   def create
-    state = State.new({
-      name: params[:State][:name],
-      population: params[:State][:population],
-      gdp: params[:State][:gdp],
-      size: params[:State][:size],
-      coastal: params[:State][:coastal]
-    })
+    state = State.new(state_params)
 
     state.save
 
@@ -29,14 +23,15 @@ class StatesController < ApplicationController
   end
 
   def update
-    @state = State.find(params[:id])
-    @state.update({
-      name: params[:State][:name],
-      population: params[:State][:population],
-      gdp: params[:State][:gdp],
-      size: params[:State][:size],
-      coastal: params[:State][:coastal]})
-    @state.save
-    redirect_to "/states/#{@state.id}"
+    state = State.find(params[:id])
+    state.update(state_params)
+    state.save
+
+    redirect_to "/states/#{state.id}"
+  end
+
+private
+  def state_params
+    params.require(:State).permit(:name, :population, :gdp, :size, :coastal)
   end
 end
