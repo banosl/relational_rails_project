@@ -1,1 +1,22 @@
 <h1>Update the Record for the City of <%= @city.name %></h1>
+
+<p>Update only the fields desired.</p>
+<form action="/cities/<%= @city.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <h5>Name:</h5>
+  <input type='text' name='City[name]' value="<%= @city.name %>"/><br/>
+  <h5>Population:</h5>
+  <input type='text' name='City[population]' value="<%= @city.population %>"/><br/>
+  <h5>Owner Occupied Housing Unit Rate:</h5>
+  <input type='text' name='City[owner_occupied_housing_unit_rate]' value="<%= @city.owner_occupied_housing_unit_rate %>"/><br/>
+   <h5>Form of Government:</h5>
+  <input type='text'name='City[form_of_gov]'/><br/>
+  <h5>Size:</h5>
+  <input type='text' name='City[size]'/><br/>
+  <h5>Median Household Income</h5>
+  <input type='text' name='City[median_household_income]'/><br/>
+  <h5>Does it have public transit? true or false:</h5>
+  <input type='text' name='City[public_transit]'/><br/>
+  <br/><input type='submit' name='Update City'/>
+</form>
