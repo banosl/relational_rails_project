@@ -77,7 +77,7 @@ RSpec.describe "State's City Index", type: :feature do
       click_link "Add City"
 
       expect(page.current_url).to eq("http://www.example.com/states/#{@washington.id}/cities/new")
-      expect(page).to have_content("Add a New City Record for #{@washington.id} State")
+      expect(page).to have_content("Add a New City Record for #{@washington.name} State")
      end
 
     end

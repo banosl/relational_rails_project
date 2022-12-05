@@ -33,7 +33,7 @@ RSpec.describe "State Add New City" do
 
     click_button "Create City"
 
-    expect(page.current_url).to eq("http://www.example.com/states/#{@washington.id}/cities")
+    expect(page.current_url).to eq("http://www.example.com/states/#{@washington.id}")
     expect(page).to have_content("Auburn")
    end
 end
