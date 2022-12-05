@@ -71,6 +71,12 @@ RSpec.describe "Cities Show", type: :feature do
       
       visit "cities/#{@spokane.id}"
       expect(page).to have_link("All States", :href => "/states")
-  end
+    end
+
+    it "see a link to update the city, 'Update City'" do
+      visit "cities/#{@seattle.id}"
+
+      expect(page).to have_link("Update City", :href => "/cities/#{@seattle.id}/new")
+    end
   end
 end
