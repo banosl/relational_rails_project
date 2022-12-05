@@ -1,4 +1,4 @@
-<h1>Add a New City Record for <%= @state.id %> State</h1>
+<h1>Add a New City Record for <%= @state.name %> State</h1>
 
 <form action="/states/<%= @state.id %>/cities" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
