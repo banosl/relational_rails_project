@@ -3,4 +3,8 @@ class StateCitiesController < ApplicationController
     @state = State.find(params[:state_id])
     @cities = @state.cities
   end
+
+  def new
+    @state = State.find(params[:state_id])
+  end
 end
