@@ -38,7 +38,6 @@ RSpec.describe "State's City Index", type: :feature do
     describe "When I visit states/:state_id/city" do
       it "See each city that is associated with the state" do
         visit "/states/#{@washington.id}/cities"
-        # save_and_open_page
 
         expect(page).to have_content(@seattle.name)
         expect(page).to have_content(@spokane.name)
