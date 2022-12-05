@@ -28,4 +28,13 @@ RSpec.describe "Cities Edit", type: :feature do
         expect(page).to have_field("City[median_household_income]")
         expect(page).to have_field("City[public_transit]")
     end
+
+    it "a city's info is updated and user is redirected to the city's show page" do
+        visit "/cities/#{@seattle.id}/edit"
+        fill_in 'City[size]', with: '121325197'
+        click_button 'Update City'
+  
+        expect(page).to have_content("#{@Seattle.name}")
+        expect(page).to have_content("City Size: 121325197")
+    end
 end
