@@ -38,7 +38,6 @@ RSpec.describe "State's City Index", type: :feature do
     describe "When I visit states/:state_id/city" do
       it "See each city that is associated with the state" do
         visit "/states/#{@washington.id}/cities"
-        # save_and_open_page
 
         expect(page).to have_content(@seattle.name)
         expect(page).to have_content(@spokane.name)
@@ -65,5 +64,20 @@ RSpec.describe "State's City Index", type: :feature do
       visit "/states/#{@washington.id}/cities"
       expect(page).to have_link("All States", :href => "/states")
      end
+
+     it "see a link to add a new city for the state called 'Add City'" do
+      visit "/states/#{@washington.id}/cities"
+
+      expect(page).to have_link("Add City", :href => "/states/#{@washington.id}/cities/new")
+     end
+
+     it "when Add City link is clicked, user is taken to a new page to fill in fields for the new city" do
+      visit "/states/#{@washington.id}/cities"
+      click_link "Add City"
+
+      expect(page.current_url).to eq("http://www.example.com/states/#{@washington.id}/cities/new")
+      expect(page).to have_content("Add a New City Record for #{@washington.name} State")
+     end
+
     end
 end

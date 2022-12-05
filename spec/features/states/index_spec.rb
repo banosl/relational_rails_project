@@ -5,7 +5,7 @@ RSpec.describe "States Index", type: :feature do
     before :each do
       @washington = State.create!(name: "Washington", 
         population: 7.739, 
-        gdp: 577.2, 
+        gdp: 492.63, 
         size: 71362, 
         coastal: true)
       @colorado = State.create!(name: "Colorado", 
@@ -15,7 +15,7 @@ RSpec.describe "States Index", type: :feature do
         coastal: false)
       @california = State.create!(name: "California", 
         population: 39.24, 
-        gdp: 3.37, 
+        gdp: 3370, 
         size: 163696, 
         coastal: true)
         @seattle = @washington.cities.create!(
@@ -61,6 +61,19 @@ RSpec.describe "States Index", type: :feature do
     it "see a link at the top of the page that goes to cities index" do
       visit "/states"
       expect(page).to have_link("All Cities", :href => "/cities")
+    end
+
+    it "see a link to create a new state record, 'Add State'" do
+      visit "/states"
+      expect(page).to have_link("Add State", :href => "/states/new")
+    end
+
+    it "when 'Add State' link is clicked user is taken to a /states/new" do
+      visit "/states"
+      click_link "Add State"
+
+      expect(page.current_url).to eq("http://www.example.com/states/new")
+      expect(page).to have_content("Add a New State Record")
     end
   end
 end

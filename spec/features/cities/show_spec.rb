@@ -53,7 +53,7 @@ RSpec.describe "Cities Show", type: :feature do
         expect(page).to have_content("Form of Government: #{@seattle.form_of_gov}")
         expect(page).to have_content("Median Household Income (in 2020 Dollars), 2016-2020: $#{@seattle.median_household_income}")
         expect(page).to have_content("Has public transportation: #{@seattle.public_transit}")
-        expect(page).to have_content("Size in: #{@seattle.size} mi^2")
+        expect(page).to have_content("Size: #{@seattle.size}")
         expect(page).to_not have_content(@spokane.name)
         expect(page).to_not have_content(@spokane.population)
     end
@@ -71,6 +71,20 @@ RSpec.describe "Cities Show", type: :feature do
       
       visit "cities/#{@spokane.id}"
       expect(page).to have_link("All States", :href => "/states")
-  end
+    end
+
+    it "see a link to update the city, 'Update City'" do
+      visit "cities/#{@seattle.id}"
+
+      expect(page).to have_link("Update City", :href => "/cities/#{@seattle.id}/edit")
+    end
+
+    it "when 'Update City' is clicked the user is taken to a form to update the city's attributes" do
+      visit "cities/#{@seattle.id}"
+      click_link "Update City"
+
+      expect(page.current_url).to eq("http://www.example.com/cities/#{@seattle.id}/edit")
+      expect(page).to have_content("Update the Record for the City of #{@seattle.name}")
+    end
   end
 end
