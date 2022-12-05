@@ -11,12 +11,12 @@
   <h5>Owner Occupied Housing Unit Rate:</h5>
   <input type='text' name='City[owner_occupied_housing_unit_rate]' value="<%= @city.owner_occupied_housing_unit_rate %>"/><br/>
    <h5>Form of Government:</h5>
-  <input type='text'name='City[form_of_gov]'/><br/>
+  <input type='text'name='City[form_of_gov]' value="<%= @city.form_of_gov %>"/><br/>
   <h5>Size:</h5>
-  <input type='text' name='City[size]'/><br/>
+  <input type='text' name='City[size]' value="<%= @city.size %>"/><br/>
   <h5>Median Household Income</h5>
-  <input type='text' name='City[median_household_income]'/><br/>
+  <input type='text' name='City[median_household_income]' value="<%= @city.median_household_income %>"/><br/>
   <h5>Does it have public transit? true or false:</h5>
-  <input type='text' name='City[public_transit]'/><br/>
+  <input type='text' name='City[public_transit]' value="<%= @city.public_transit %>"/><br/>
   <br/><input type='submit' name='Update City'/>
 </form>
