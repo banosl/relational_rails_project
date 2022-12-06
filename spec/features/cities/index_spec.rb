@@ -56,9 +56,7 @@ RSpec.describe "Cities Index", type: :feature do
 
     it "has a link 'cities with public transit'" do
       visit "/cities"
-      expect(page).to have_link("Cities with Public Transit")
-      # save_and_open_page
-      
+      expect(page).to have_link("Cities with Public Transit")   
     end
 
     it "When 'cities with public transit' link is clicked the user only see records for cities that do have public transit" do
