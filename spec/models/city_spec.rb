@@ -64,4 +64,8 @@ RSpec.describe City, type: :model do
       expect(City.cities_with_public_transit).to_not eq([@republic])
     end
   end
+
+  it 'cities ordered alphabetically' do
+    expect(City.cities_alphabetically).to eq([@republic, @seattle, @spokane])
+  end
 end
