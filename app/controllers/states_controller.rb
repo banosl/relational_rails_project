@@ -30,6 +30,12 @@ class StatesController < ApplicationController
     redirect_to "/states/#{state.id}"
   end
 
+  def destroy
+    State.destroy(params[:id])
+
+    redirect_to "/states"
+  end
+
 private
   def state_params
     params.require(:State).permit(:name, :population, :gdp, :size, :coastal)

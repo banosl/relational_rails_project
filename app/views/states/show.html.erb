@@ -10,7 +10,9 @@
 <li>Total number of cities: <%= @state.count %></li>
 </ul>
 
-<a href="/states/<%= @state.id %>/edit">Update State</a>
+<a href="/states/<%= @state.id %>/edit">Update State</a><br/>
+
+<br/><%= link_to 'Delete State', "/states/#{@state.id}", method: :delete %>
 
 <h3> Cities </h3>
 <a href="/states/<%=@state.id %>/cities">View All Cities</a>
