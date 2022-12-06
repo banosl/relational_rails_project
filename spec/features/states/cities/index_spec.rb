@@ -21,6 +21,13 @@ RSpec.describe "State's City Index", type: :feature do
             size: 69.49, 
             median_household_income: 52600, 
             public_transit: true)
+          @republic = @washington.cities.create!(name: "Republic",
+            population: 1144, 
+            owner_occupied_housing_unit_rate: 47.0, 
+            form_of_gov: "Mayor-Council", 
+            size: 69.49, 
+            median_household_income: 32639, 
+            public_transit: false)
           @colorado = State.create!(name:"Colorado", 
             population:5.812, 
             gdp:373.76, 
@@ -85,11 +92,19 @@ RSpec.describe "State's City Index", type: :feature do
       expect(page).to have_link("Sort Cities by Alphabetical Order")   
     end
 
-    it "When 'Sort Cities by Alphabetical Order' link is clicked the user sees cities in that order" do
-      visit "/states/#{@washington.id}/cities"
-      click_link "Sort Cities by Alphabetical Order"
+    describe "Alphabetical Order" do
+      let(:seattle) {"Seattle"}
+      let(:spokane) {"Spokane"}
+      let(:republic) {"Republic"}
 
-      
+      it "When 'Sort Cities by Alphabetical Order' link is clicked the user sees cities in that order" do
+        visit "/states/#{@washington.id}/cities"
+        click_link "Sort Cities by Alphabetical Order"
+
+        expect(republic).to appear_before(seattle)
+        expect(seattle).to appear_before(spokane)
+        expect(spokane).to_not appear_before(republic)
+      end
     end
-    end
+  end
 end
