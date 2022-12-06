@@ -12,7 +12,6 @@ class StatesController < ApplicationController
 
   def create
     state = State.new(state_params)
-
     state.save
 
     redirect_to '/states'
