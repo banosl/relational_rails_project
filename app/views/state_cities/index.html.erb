@@ -10,7 +10,7 @@
 <% @cities.each do |city| %>
 <h3><%= city.name %></h3>
 <a href="/cities/<%= city.id %>/edit">Edit</a>
-<br/><%= link_to "Delete #{city.name}", "/cities/#{city.id}", method: :delete %>
+<br/><%= link_to "Delete #{city.name}", "/states/#{@state.id}/cities/#{city.id}", method: :delete %>
 
 <ul>
   <p>Population Estimates, July 1, 2021: <%=city.population %></p>

@@ -23,16 +23,26 @@ class StateCitiesController < ApplicationController
   def create
     @state = State.find(params[:state_id])
 
-    city = @state.cities.create!({
-      name: params[:City][:name],
-      population: params[:City][:population],
-      owner_occupied_housing_unit_rate: params[:City][:owner_occupied_housing_unit_rate],
-      form_of_gov: params[:City][:form_of_gov],
-      size: params[:City][:size],
-      median_household_income: params[:City][:median_household_income],
-      public_transit: params[:City][:median_household_income]
-    })
+    city = @state.cities.create!(state_cities_params)
 
     redirect_to "/states/#{@state.id}"
   end
+
+  def destroy
+    state = State.find(params[:state_id])
+    City.destroy(params[:city_id])
+
+    redirect_to("/states/#{state.id}/cities")
+  end
+
+private
+def state_cities_params
+  params.require(:City).permit(:name,
+                              :population, 
+                              :owner_occupied_housing_unit_rate, 
+                              :form_of_gov, 
+                              :size, 
+                              :median_household_income, 
+                              :public_transit)
+end
 end
