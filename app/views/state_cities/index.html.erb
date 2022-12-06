@@ -1,9 +1,17 @@
 <h1><%= @state.name %> Cities</h1>
-<a href="/states">All States</a> | <a href="/cities">All Cities</a> | <a href="/states/<%=@state.id %>/cities?sort=alphabetical">Sort Cities by Alphabetical Order</a>
+<a href="/states">All States</a> | <a href="/cities">All Cities</a> | <a href="/states/<%=@state.id %>/cities?sort=alphabetical">Sort Cities by Alphabetical Order</a><br/>
+
+<br/><%= form_with url: "/states/#{@state.id}/cities?miles_square=over", method: :get, local: true do |form|%>
+<%= form.label :Mile_Squared %>
+<%= form.text_field :miles_squared %>
+<%= form.submit 'Cities Bigger than This' %>
+<% end %>
 
 <% @cities.each do |city| %>
 <h3><%= city.name %></h3>
 <a href="/cities/<%= city.id %>/edit">Edit</a>
+<br/><%= link_to "Delete #{city.name}", "/states/#{@state.id}/cities/#{city.id}", method: :delete %>
+
 <ul>
   <p>Population Estimates, July 1, 2021: <%=city.population %></p>
   <p>Owner Occupied Housing Unit Rate, 2016-2020: <%=city.owner_occupied_housing_unit_rate %>%</p>

@@ -25,7 +25,7 @@ RSpec.describe "State's City Index", type: :feature do
             population: 1144, 
             owner_occupied_housing_unit_rate: 47.0, 
             form_of_gov: "Mayor-Council", 
-            size: 69.49, 
+            size: 1.421, 
             median_household_income: 32639, 
             public_transit: false)
           @colorado = State.create!(name:"Colorado", 
@@ -125,6 +125,38 @@ RSpec.describe "State's City Index", type: :feature do
       click_link "Edit", :href => "/cities/#{@republic.id}/edit"
 
       expect(current_path).to eq("/cities/#{@republic.id}/edit")
+    end
+
+    it "has a form that allows user to enter a value for city size" do
+      visit "/states/#{@washington.id}/cities"
+
+      expect(page).to have_field(:miles_squared)
+      expect(page).to have_button("Cities Bigger than This")
+    end
+
+    xit "when a value is entered and the submit button is clicked the user is brought back to the current page with just the cities over that size" do
+      visit "/states/#{@washington.id}/cities"
+      fill_in :miles_squared, with: 70.0
+# binding.pry
+      expect(page).to_not have_content(@spokane.name)
+      expect(page).to_not have_content(@republic.name)
+    end
+
+    it "each city has a link to delete it" do
+      visit "/states/#{@washington.id}/cities"
+
+      expect(page).to have_link("Delete #{@seattle.name}")
+    end    
+
+    it "when delete city is clicked the page refreshes and the chosen city is gone" do
+      visit "/states/#{@washington.id}/cities"
+      
+      expect(page).to have_content("Seattle")
+
+      click_link "Delete #{@seattle.name}"
+
+      expect(current_path).to eq("/states/#{@washington.id}/cities")
+      expect(page).to_not have_content("Seattle")
     end
   end
 end

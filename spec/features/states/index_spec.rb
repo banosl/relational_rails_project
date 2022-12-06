@@ -90,5 +90,19 @@ RSpec.describe "States Index", type: :feature do
 
       expect(current_path).to eq("/states/#{@washington.id}/edit")
     end
+
+    it "Next to every state there is a link to delete that state" do
+      visit "/states"
+
+      expect(page).to have_link("Delete #{@washington.name}")
+    end
+
+    it "When delete is clicked the state is removed and user is redirected to states index page and see that the state is gone" do
+      visit "/states"
+      click_link "Delete #{@washington.name}"
+
+      expect(current_path).to eq("/states")
+      expect(page).to_not have_content("Washington")
+    end
   end
 end
