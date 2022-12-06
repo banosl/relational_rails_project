@@ -29,7 +29,7 @@ class CitiesController < ApplicationController
 
 private
   def city_params
-    params.require(:City).permit(:name, 
+    params.permit(:name, 
                   :population, 
                   :owner_occupied_housing_unit_rate, 
                   :form_of_gov, 
