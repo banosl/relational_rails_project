@@ -1,7 +1,7 @@
 class City < ApplicationRecord
   belongs_to :state
   
-  def cities_with_public_transit
-
+  def self.cities_with_public_transit
+    where(public_transit: :true)
   end
 end
