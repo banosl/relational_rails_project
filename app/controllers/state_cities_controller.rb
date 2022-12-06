@@ -6,15 +6,11 @@ class StateCitiesController < ApplicationController
     # binding.pry
     @state = State.find(params[:state_id])
     @cities = @state.cities
-    @cities = @cities.order(name: :asc) if sorted_alpha == "alphabetical" #refactor the order method into the model
+    # binding.pry
+    @cities = @cities.cities_alphabetically if sorted_alpha == "alphabetical"
     # binding.pry
     # @cities = @cities.where(size: > :size_query)
   end
-
-  # def sort_alphabetical
-  #   binding.pry
-  #   self.order(name: :asc)
-  # end
 
   def new
     @state = State.find(params[:state_id])
@@ -36,13 +32,13 @@ class StateCitiesController < ApplicationController
   end
 
 private
-def state_cities_params
-  params.require(:City).permit(:name,
-                              :population, 
-                              :owner_occupied_housing_unit_rate, 
-                              :form_of_gov, 
-                              :size, 
-                              :median_household_income, 
-                              :public_transit)
-end
+  def state_cities_params
+    params.permit(:name,
+                  :population, 
+                  :owner_occupied_housing_unit_rate, 
+                  :form_of_gov, 
+                  :size, 
+                  :median_household_income, 
+                  :public_transit)
+  end
 end

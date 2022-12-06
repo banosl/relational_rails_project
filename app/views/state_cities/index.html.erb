@@ -1,5 +1,5 @@
 <h1><%= @state.name %> Cities</h1>
-<a href="/states">All States</a> | <a href="/cities">All Cities</a> | <a href="/states/<%=@state.id %>/cities?sort=alphabetical">Sort Cities by Alphabetical Order</a><br/>
+<a href="/states">All States</a> | <a href="/cities">All Cities</a> | <%= link_to "Sort Cities by Alphabetical Order", "/states/#{@state.id}/cities?sort=alphabetical", method: :get %><br/>
 
 <br/><%= form_with url: "/states/#{@state.id}/cities?miles_square=over", method: :get, local: true do |form|%>
 <%= form.label :Mile_Squared %>

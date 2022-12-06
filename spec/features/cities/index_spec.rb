@@ -56,6 +56,7 @@ RSpec.describe "Cities Index", type: :feature do
 
     it "has a link 'cities with public transit'" do
       visit "/cities"
+
       expect(page).to have_link("Cities with Public Transit", :href => "/cities?public_transit=true")   
     end
 

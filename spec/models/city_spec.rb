@@ -9,13 +9,28 @@ RSpec.describe City, type: :model do
                                 coastal: true)
 
     @seattle = @washington.cities.create!(name: "Seattle", 
-    population: 733919, 
-    owner_occupied_housing_unit_rate: 44.9, 
-    form_of_gov: "Mayor-Council", 
-    size: 83.78, 
-    median_household_income: 97185, 
-    public_transit: true,
-    state_id: @washington.id)
+      population: 733919, 
+      owner_occupied_housing_unit_rate: 44.9, 
+      form_of_gov: "Mayor-Council", 
+      size: 83.78, 
+      median_household_income: 97185, 
+      public_transit: true,
+      state_id: @washington.id)
+    @spokane = @washington.cities.create!(
+      name: "Spokane", 
+      population: 229071, 
+      owner_occupied_housing_unit_rate: 56.0, 
+      form_of_gov: "Mayor-Council", 
+      size: 69.49, 
+      median_household_income: 52600, 
+      public_transit: true)
+    @republic = @washington.cities.create!(name: "Republic",
+      population: 1144, 
+      owner_occupied_housing_unit_rate: 47.0, 
+      form_of_gov: "Mayor-Council", 
+      size: 69.49, 
+      median_household_income: 32639, 
+      public_transit: false)
   end
 
   describe 'relationships' do
@@ -40,5 +55,17 @@ RSpec.describe City, type: :model do
       expect(@seattle.state).to eq(@washington)
 
     end
+  end
+
+  describe "#cities_with_public_transit" do
+    it 'returns the cities with public transit' do
+      
+      expect(City.cities_with_public_transit).to eq([@seattle, @spokane])
+      expect(City.cities_with_public_transit).to_not eq([@republic])
+    end
+  end
+
+  it 'cities ordered alphabetically' do
+    expect(City.cities_alphabetically).to eq([@republic, @seattle, @spokane])
   end
 end

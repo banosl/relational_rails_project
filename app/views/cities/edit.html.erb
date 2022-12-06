@@ -1,22 +1,25 @@
 <h1>Update the Record for the City of <%= @city.name %></h1>
 
-<p>Update only the fields desired.</p>
-<form action="/cities/<%= @city.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH" />
-  <h5>Name:</h5>
-  <input type='text' name='City[name]' value="<%= @city.name %>"/><br/>
-  <h5>Population:</h5>
-  <input type='text' name='City[population]' value="<%= @city.population %>"/><br/>
-  <h5>Owner Occupied Housing Unit Rate:</h5>
-  <input type='text' name='City[owner_occupied_housing_unit_rate]' value="<%= @city.owner_occupied_housing_unit_rate %>"/><br/>
-   <h5>Form of Government:</h5>
-  <input type='text'name='City[form_of_gov]' value="<%= @city.form_of_gov %>"/><br/>
-  <h5>Size:</h5>
-  <input type='text' name='City[size]' value="<%= @city.size %>"/><br/>
-  <h5>Median Household Income</h5>
-  <input type='text' name='City[median_household_income]' value="<%= @city.median_household_income %>"/><br/>
-  <h5>Does it have public transit? true or false:</h5>
-  <input type='text' name='City[public_transit]' value="<%= @city.public_transit %>"/><br/>
-  <br/><input type='submit' name='Update City'/>
-</form>
+<%= form_with url: "/cities/#{@city.id}", method: :patch, local: true do |form| %>
+
+       <%= form.label :Name %>
+  <br/><%= form.text_field :name, :value => "#{@city.name}" %><br/>
+  <br/><%= form.label :Population %>
+  <br/><%= form.text_field :population, :value => "#{@city.population}" %><br/>
+  <br/><%= form.label :Owner_Occupied_Housing_Unit_Rate %>
+  <br/><%= form.text_field :owner_occupied_housing_unit_rate, :value => "#{@city.owner_occupied_housing_unit_rate}" %><br/>
+  <br/><%= form.label :Form_of_Government %>
+  <br/><%= form.text_field :form_of_gov, :value => "#{@city.form_of_gov}" %><br/>
+  <br/><%= form.label :Size %>
+  <br/><%= form.text_field :size, :value => "#{@city.size}" %><br/>
+  <br/><%= form.label :Median_Household_Income %>
+  <br/><%= form.text_field :median_household_income, :value => "#{@city.median_household_income}" %><br/>
+  <br/><%= form.label :Public_Transit %>
+  <br/><%= form.label :True %> 
+  <%= form.radio_button :public_transit, "true", :checked => ("#{@city.public_transit}" == "true") %>
+  <br/><%= form.label :False %> 
+  <%= form.radio_button :public_transit, "false", :checked => ("#{@city.public_transit}" == "false") %><br/>
+  
+  <br/><%= form.submit "Edit City" %>
+
+  <% end %>

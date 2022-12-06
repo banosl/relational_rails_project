@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
   def index
     public_transit = params[:public_transit]
     @cities = City.all
-    @cities = City.where(public_transit: :true) if public_transit == "true"
+    @cities = City.cities_with_public_transit if public_transit == "true"
   end
   
   def show
@@ -15,10 +15,9 @@ class CitiesController < ApplicationController
   
   def update
     city = City.find(params[:id])
-    
     city.update(city_params)
-    
     city.save
+
     redirect_to "/cities/#{city.id}"
   end
 
@@ -30,7 +29,7 @@ class CitiesController < ApplicationController
 
 private
   def city_params
-    params.require(:City).permit(:name, 
+    params.permit(:name, 
                   :population, 
                   :owner_occupied_housing_unit_rate, 
                   :form_of_gov, 

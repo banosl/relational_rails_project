@@ -22,20 +22,22 @@ RSpec.describe "States Edit", type: :feature do
     it "has fields for updating the state " do
         visit "/states/#{@washington.id}/edit"
 
-        expect(page).to have_field("State[name]")
-        expect(page).to have_field("State[population]")
-        expect(page).to have_field("State[gdp]")
-        expect(page).to have_field("State[size]")
-        expect(page).to have_field("State[coastal]")
+        expect(page).to have_field(:name)
+        expect(page).to have_field(:population)
+        expect(page).to have_field(:gdp)
+        expect(page).to have_field(:size)
+        expect(page).to have_field(:coastal)
     end
 
     it "a state's info is updated and user is redirected to the state's show page" do
       visit "/states/#{@washington.id}/edit"
-      fill_in 'State[size]', with: '121325.64'
-      click_button 'Update State'
+      fill_in :size, with: '121325.64'
+      choose :coastal, with: "false"
+      click_button 'Edit State'
 
       expect(page).to have_content("#{@washington.name}")
       expect(page).to have_content("State Size: 121325.64")
+      expect(page).to have_content("Is it a coastal state?: false")
     end
 
 end

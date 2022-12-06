@@ -89,7 +89,7 @@ RSpec.describe "State's City Index", type: :feature do
      it "has a link 'Sort Cities by Alphabetical Order'" do
       visit "/states/#{@washington.id}/cities"
       
-      expect(page).to have_link("Sort Cities by Alphabetical Order")   
+      expect(page).to have_link("Sort Cities by Alphabetical Order", :href => "/states/#{@washington.id}/cities?sort=alphabetical")   
     end
 
     describe "Alphabetical Order" do

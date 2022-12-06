@@ -1,17 +1,23 @@
 <h1>Update the <%= @state.name %> State Record</h1>
 <p>Update only the fields desired.</p>
-<form action="/states/<%= @state.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH" />
-  <h5>Name:</h5>
-  <input type='text' name='State[name]' value="<%= @state.name %>"/><br/>
-  <h5>Population:</h5>
-  <input type='text' name='State[population]' value="<%= @state.population %>"/><br/>
-  <h5>GDP:</h5>
-  <input type='text' name='State[gdp]' value="<%= @state.gdp %>"/><br/>
-  <h5>Size:</h5>
-  <input type='text' name='State[size]' value="<%= @state.size %>"/><br/>
-  <h5>Is it a coastal state?:</h5>
-  <input type='text' name='State[coastal]' value="<%= @state.coastal %>"/><br/>
-  <br/><input type='submit' name='Update State'/>
-</form>
+
+<%= form_with url: "/states/#{@state.id}", method: :patch, local: true do |form| %>
+
+       <%= form.label :Name %>
+  <br/><%= form.text_field :name, :value => "#{@state.name}" %><br/>
+  <br/><%= form.label :Population %>
+  <br/><%= form.text_field :population, :value => "#{@state.population}" %><br/>
+  <br/><%= form.label :GDP%>
+  <br/><%= form.text_field :gdp, :value => "#{@state.gdp}" %><br/>
+  <br/><%= form.label :Size %>
+  <br/><%= form.text_field :size, :value => "#{@state.size}" %><br/>
+  
+  <br/><%= form.label :Coastal_state %>
+  <br/><%= form.label :True %> 
+  <%= form.radio_button :coastal, "true", :checked => ("#{@state.coastal}" == "true") %>
+  <br/><%= form.label :False %> 
+  <%= form.radio_button :coastal, "false", :checked => ("#{@state.coastal}" == "false") %><br/>
+  
+  <br/><%= form.submit "Edit State" %>
+
+  <% end %>

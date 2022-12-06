@@ -1,16 +1,22 @@
 <h1>Add a New State Record</h1>
 
-<form action="/states" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <h5>Name:</h5>
-  <input type='text' name='State[name]'/><br/>
-  <h5>Population:</h5>
-  <input type='text' name='State[population]'/><br/>
-  <h5>GDP:</h5>
-  <input type='text' name='State[gdp]'/><br/>
-  <h5>Size:</h5>
-  <input type='text' name='State[size]'/><br/>
-  <h5>Is it a coastal state?:</h5>
-  <input type='text' name='State[coastal]'/><br/>
-  <br/><input type='submit' name='Create State'/>
-</form>
+<%= form_with url: "/states", method: :post, local: true do |form| %>
+
+       <%= form.label :Name %>
+  <br/><%= form.text_field :name %><br/>
+  <br/><%= form.label :Population %>
+  <br/><%= form.text_field :population %><br/>
+  <br/><%= form.label :GDP%>
+  <br/><%= form.text_field :gdp %><br/>
+  <br/><%= form.label :Size %>
+  <br/><%= form.text_field :size %><br/>
+  
+  <br/><%= form.label :Coastal_state %>
+  <br/><%= form.label :True %> 
+  <%= form.radio_button :coastal, "true" %>
+  <br/><%= form.label :False %> 
+  <%= form.radio_button :coastal, "false" %><br/>
+  
+  <br/><%= form.submit "Create State" %>
+
+  <% end %>
