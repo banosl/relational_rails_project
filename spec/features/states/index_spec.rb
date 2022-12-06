@@ -72,7 +72,7 @@ RSpec.describe "States Index", type: :feature do
       visit "/states"
       click_link "Add State"
 
-      expect(page.current_url).to eq("http://www.example.com/states/new")
+      expect(page.current_path).to eq("/states/new")
       expect(page).to have_content("Add a New State Record")
     end
 
@@ -82,6 +82,13 @@ RSpec.describe "States Index", type: :feature do
       expect(page).to have_link("Edit", :href => "/states/#{@washington.id}/edit")
       expect(page).to have_link("Edit", :href => "/states/#{@colorado.id}/edit")
       expect(page).to have_link("Edit", :href => "/states/#{@california.id}/edit")
+    end
+
+    it "When edit link is clicked user is taken to the state's edit page" do
+      visit "/states"
+      click_link "Edit", :href => "/states/#{@washington.id}/edit"
+
+      expect(current_path).to eq("/states/#{@washington.id}/edit")
     end
   end
 end
