@@ -31,6 +31,10 @@ class StatesController < ApplicationController
   end
 
   def destroy
+    state = State.find(params[:id])
+    state.cities.map do |city|
+      city.destroy
+    end
     State.destroy(params[:id])
 
     redirect_to "/states"
