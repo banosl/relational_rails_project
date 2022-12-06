@@ -79,5 +79,17 @@ RSpec.describe "State's City Index", type: :feature do
       expect(page).to have_content("Add a New City Record for #{@washington.name} State")
      end
 
+     it "has a link 'Sort Cities by Alphabetical Order'" do
+      visit "/states/#{@washington.id}/cities"
+      save_and_open_page
+      expect(page).to have_link("Sort Cities by Alphabetical Order")   
+    end
+
+    it "When 'Sort Cities by Alphabetical Order' link is clicked the user sees cities in that order" do
+      visit "/states/#{@washington.id}/cities"
+      click_link "Sort Cities by Alphabetical Order"
+
+      
+    end
     end
 end
