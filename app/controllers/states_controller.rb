@@ -41,6 +41,6 @@ class StatesController < ApplicationController
 
 private
   def state_params
-    params.require(:State).permit(:name, :population, :gdp, :size, :coastal)
+    params.permit(:name, :population, :gdp, :size, :coastal)
   end
 end
