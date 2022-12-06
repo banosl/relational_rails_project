@@ -1,9 +1,14 @@
 class StateCitiesController < ApplicationController
   def index
+    # binding.pry
     sorted_alpha = params[:sort]
+    size_query = params[:miles_squared].to_f
+    # binding.pry
     @state = State.find(params[:state_id])
     @cities = @state.cities
     @cities = @cities.order(name: :asc) if sorted_alpha == "alphabetical"
+    # binding.pry
+    # @cities = @cities.where(size: > :size_query)
   end
 
   # def sort_alphabetical
