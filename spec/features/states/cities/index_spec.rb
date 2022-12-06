@@ -25,7 +25,7 @@ RSpec.describe "State's City Index", type: :feature do
             population: 1144, 
             owner_occupied_housing_unit_rate: 47.0, 
             form_of_gov: "Mayor-Council", 
-            size: 69.49, 
+            size: 1.421, 
             median_household_income: 32639, 
             public_transit: false)
           @colorado = State.create!(name:"Colorado", 
@@ -125,6 +125,17 @@ RSpec.describe "State's City Index", type: :feature do
       click_link "Edit", :href => "/cities/#{@republic.id}/edit"
 
       expect(current_path).to eq("/cities/#{@republic.id}/edit")
+    end
+
+    it "has a form that allows user to enter a value for city size" do
+      visit "/states/#{@washington.id}/cities"
+
+      expect(page).to have_field(:miles_squared)
+      expect(page).to have_button("Cities Bigger than This")
+    end
+
+    it "when a value is entered and the submit button is clicked the user is brought back to the current page with just the cities over that size" do
+
     end
   end
 end
