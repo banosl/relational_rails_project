@@ -141,5 +141,11 @@ RSpec.describe "State's City Index", type: :feature do
       expect(page).to_not have_content(@spokane.name)
       expect(page).to_not have_content(@republic.name)
     end
+
+    it "each city has a link to delete it" do
+      visit "/states/#{@washington.id}/cities"
+
+      expect(page).to have_link("Delete #{@seattle.name}")
+    end    
   end
 end
