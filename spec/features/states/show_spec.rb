@@ -105,5 +105,11 @@ RSpec.describe "States Show", type: :feature do
       expect(page.current_path).to eq("/states/#{@washington.id}/cities/new")
       expect(page).to have_content("Add a New City Record for #{@washington.name} State")
      end
+
+     it "See a link to delete the state" do
+      visit "/states/#{@california.id}"
+
+      expect(page).to have_link("Delete State", :href => "/states/#{@california.id}/delete")
+     end
   end
 end
