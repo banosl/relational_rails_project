@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
   def index
     public_transit = params[:public_transit]
     @cities = City.all
-    @cities = City.where(public_transit: :true) if public_transit == "true"
+    @cities = City.cities_with_public_transit if public_transit == "true"
   end
   
   def show
