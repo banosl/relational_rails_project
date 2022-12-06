@@ -3,6 +3,7 @@
 
 <% @cities.each do |city| %>
 <h3><%= city.name %></h3>
+<a href="/cities/<%= city.id %>/edit">Edit</a>
 <ul>
   <p>Population Estimates, July 1, 2021: <%=city.population %></p>
   <p>Owner Occupied Housing Unit Rate, 2016-2020: <%=city.owner_occupied_housing_unit_rate %>%</p>
