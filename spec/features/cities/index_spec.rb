@@ -86,5 +86,11 @@ RSpec.describe "Cities Index", type: :feature do
 
       expect(current_path).to eq("/cities/#{@republic.id}/edit")
     end
+
+    it "each city has a link to delete it" do
+      visit "/cities"
+
+      expect(page).to have_link("Delete #{@seattle.name}")
+    end
   end
 end
