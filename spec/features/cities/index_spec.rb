@@ -66,5 +66,25 @@ RSpec.describe "Cities Index", type: :feature do
       expect(page).to have_content(@seattle.name)
       expect(page).to_not have_content(@republic.name)
     end
+
+    it "There is a link to edit the city's info next to each city" do
+      visit "/cities"
+
+      expect(page).to have_link("Edit", :href => "/cities/#{@seattle.id}/edit")
+      expect(page).to have_link("Edit", :href => "/cities/#{@spokane.id}/edit")
+      expect(page).to have_link("Edit", :href => "/cities/#{@republic.id}/edit")
+    end
+
+    it "When a city's edit link is clicked user is take to that city's edit page" do
+      visit "/cities"
+      click_link "Edit", :href => "/cities/#{@seattle.id}/edit"
+
+      expect(current_path).to eq("/cities/#{@seattle.id}/edit")
+
+      visit "/cities"
+      click_link "Edit", :href => "/cities/#{@republic.id}/edit"
+
+      expect(current_path).to eq("/cities/#{@republic.id}/edit")
+    end
   end
 end
