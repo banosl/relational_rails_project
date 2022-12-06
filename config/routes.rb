@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/states/:id', to: 'states#show'
   get '/states/:id/edit', to: 'states#edit'
   patch '/states/:id', to: 'states#update'
+  delete '/states/:id', to: 'states#destroy'
 
   get '/cities', to: 'cities#index'
   get '/cities/:id', to: 'cities#show'
