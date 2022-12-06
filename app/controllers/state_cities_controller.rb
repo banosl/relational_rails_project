@@ -32,13 +32,13 @@ class StateCitiesController < ApplicationController
   end
 
 private
-def state_cities_params
-  params.require(:City).permit(:name,
-                              :population, 
-                              :owner_occupied_housing_unit_rate, 
-                              :form_of_gov, 
-                              :size, 
-                              :median_household_income, 
-                              :public_transit)
-end
+  def state_cities_params
+    params.permit(:name,
+                  :population, 
+                  :owner_occupied_housing_unit_rate, 
+                  :form_of_gov, 
+                  :size, 
+                  :median_household_income, 
+                  :public_transit)
+  end
 end
