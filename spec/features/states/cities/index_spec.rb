@@ -21,6 +21,13 @@ RSpec.describe "State's City Index", type: :feature do
             size: 69.49, 
             median_household_income: 52600, 
             public_transit: true)
+          @republic = @washington.cities.create!(name: "Republic",
+            population: 1144, 
+            owner_occupied_housing_unit_rate: 47.0, 
+            form_of_gov: "Mayor-Council", 
+            size: 69.49, 
+            median_household_income: 32639, 
+            public_transit: false)
           @colorado = State.create!(name:"Colorado", 
             population:5.812, 
             gdp:373.76, 
@@ -75,9 +82,49 @@ RSpec.describe "State's City Index", type: :feature do
       visit "/states/#{@washington.id}/cities"
       click_link "Add City"
 
-      expect(page.current_url).to eq("http://www.example.com/states/#{@washington.id}/cities/new")
+      expect(page.current_path).to eq("/states/#{@washington.id}/cities/new")
       expect(page).to have_content("Add a New City Record for #{@washington.name} State")
      end
 
+     it "has a link 'Sort Cities by Alphabetical Order'" do
+      visit "/states/#{@washington.id}/cities"
+      
+      expect(page).to have_link("Sort Cities by Alphabetical Order")   
     end
+
+    describe "Alphabetical Order" do
+      let(:seattle) {"Seattle"}
+      let(:spokane) {"Spokane"}
+      let(:republic) {"Republic"}
+
+      it "When 'Sort Cities by Alphabetical Order' link is clicked the user sees cities in that order" do
+        visit "/states/#{@washington.id}/cities"
+        click_link "Sort Cities by Alphabetical Order"
+        
+        expect(republic).to appear_before(seattle)
+        expect(seattle).to appear_before(spokane)
+        expect(spokane).to_not appear_before(republic)
+      end
+    end
+
+    it "There is a link to edit the city's info next to each city" do
+      visit "/states/#{@washington.id}/cities"
+
+      expect(page).to have_link("Edit", :href => "/cities/#{@seattle.id}/edit")
+      expect(page).to have_link("Edit", :href => "/cities/#{@spokane.id}/edit")
+      expect(page).to have_link("Edit", :href => "/cities/#{@republic.id}/edit")
+    end
+
+    it "When a city's edit link is clicked user is take to that city's edit page" do
+      visit "/states/#{@washington.id}/cities"
+      click_link "Edit", :href => "/cities/#{@seattle.id}/edit"
+
+      expect(current_path).to eq("/cities/#{@seattle.id}/edit")
+
+      visit "/states/#{@washington.id}/cities"
+      click_link "Edit", :href => "/cities/#{@republic.id}/edit"
+
+      expect(current_path).to eq("/cities/#{@republic.id}/edit")
+    end
+  end
 end

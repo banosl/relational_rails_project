@@ -1,6 +1,8 @@
 class CitiesController < ApplicationController
   def index
-    @cities= City.all
+    public_transit = params[:public_transit]
+    @cities = City.all
+    @cities = City.where(public_transit: :true) if public_transit == "true"
   end
   
   def show
@@ -12,19 +14,22 @@ class CitiesController < ApplicationController
   end
   
   def update
-    @city = City.find(params[:id])
+    city = City.find(params[:id])
     
-    @city.update({
-      name: params[:City][:name],
-      population: params[:City][:population],
-      owner_occupied_housing_unit_rate: params[:City][:owner_occupied_housing_unit_rate],
-      form_of_gov: params[:City][:form_of_gov],
-      size: params[:City][:size],
-      median_household_income: params[:City][:median_household_income],
-      public_transit: params[:City][:median_household_income]
-    })
+    city.update(city_params)
     
-    @city.save
-    redirect_to "/cities/#{@city.id}"
+    city.save
+    redirect_to "/cities/#{city.id}"
+  end
+
+private
+  def city_params
+    params.require(:City).permit(:name, 
+                  :population, 
+                  :owner_occupied_housing_unit_rate, 
+                  :form_of_gov, 
+                  :size, 
+                  :median_household_income, 
+                  :public_transit)
   end
 end

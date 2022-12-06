@@ -31,11 +31,11 @@ RSpec.describe "States Edit", type: :feature do
 
     it "a state's info is updated and user is redirected to the state's show page" do
       visit "/states/#{@washington.id}/edit"
-      fill_in 'State[size]', with: '121325197'
+      fill_in 'State[size]', with: '121325.64'
       click_button 'Update State'
 
       expect(page).to have_content("#{@washington.name}")
-      expect(page).to have_content("State Size: 121325197")
+      expect(page).to have_content("State Size: 121325.64")
     end
 
 end

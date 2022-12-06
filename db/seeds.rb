@@ -54,3 +54,10 @@
   size: 154.7, 
   median_household_income: 72661, 
   public_transit: true)
+@republic = @washington.cities.create!(name: "Republic",
+  population: 1144, 
+  owner_occupied_housing_unit_rate: 47.0, 
+  form_of_gov: "Mayor-Council", 
+  size: 69.49, 
+  median_household_income: 32639, 
+  public_transit: false)  
