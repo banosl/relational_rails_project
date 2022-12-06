@@ -46,7 +46,6 @@ RSpec.describe "States Show", type: :feature do
     end
     it "see the state with that id including the parent's attributes" do
         visit "/states/#{@washington.id}"
-        # save_and_open_page
 
         expect(page).to have_content(@washington.name)
         expect(page).to have_content(@washington.population)
@@ -89,7 +88,7 @@ RSpec.describe "States Show", type: :feature do
       visit "/states/#{@washington.id}"
       click_link "Update State"
 
-      expect(page.current_url).to eq("http://www.example.com/states/#{@washington.id}/edit")
+      expect(page.current_path).to eq("/states/#{@washington.id}/edit")
       expect(page).to have_content("Update the #{@washington.name} State Record")
     end
 
@@ -103,7 +102,7 @@ RSpec.describe "States Show", type: :feature do
       visit "/states/#{@washington.id}"
       click_link "Add City"
 
-      expect(page.current_url).to eq("http://www.example.com/states/#{@washington.id}/cities/new")
+      expect(page.current_path).to eq("/states/#{@washington.id}/cities/new")
       expect(page).to have_content("Add a New City Record for #{@washington.name} State")
      end
   end
