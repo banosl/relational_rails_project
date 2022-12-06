@@ -22,6 +22,13 @@ RSpec.describe "Cities Index", type: :feature do
         size: 69.49, 
         median_household_income: 52600, 
         public_transit: true)
+      @republic = @washington.cities.create!(name: "Republic",
+        population: 1144, 
+        owner_occupied_housing_unit_rate: 47.0, 
+        form_of_gov: "Mayor-Council", 
+        size: 69.49, 
+        median_household_income: 32639, 
+        public_transit: false)
     end
     it 'show each city in the system including their attributes' do
       visit "/cities"
@@ -45,6 +52,21 @@ RSpec.describe "Cities Index", type: :feature do
     it "see a link at the top of the page that goes to states index" do
       visit "/cities"
       expect(page).to have_link("All States", :href => "/states")
+    end
+
+    it "has a link 'cities with public transit'" do
+      visit "/cities"
+      expect(page).to have_link("Cities with Public Transit")
+      # save_and_open_page
+      
+    end
+
+    it "When 'cities with public transit' link is clicked the user only see records for cities that do have public transit" do
+      visit "/cities"
+      click_link "Cities with Public Transit"
+
+      expect(page).to have_content(@seattle.name)
+      expect(page).to_not have_content(@republic.name)
     end
   end
 end
