@@ -92,5 +92,13 @@ RSpec.describe "Cities Show", type: :feature do
 
       expect(page).to have_link("Delete City")
     end
+
+    it "When delete city is clicked, the city is deleted and user is redirected to cities index page" do
+      visit "cities/#{@spokane.id}"
+      click_link "Delete City"
+
+      expect(current_path).to eq("/cities")
+      expect(page).to_not have_content("Spokane")
+    end
   end
 end
