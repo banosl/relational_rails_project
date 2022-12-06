@@ -75,5 +75,13 @@ RSpec.describe "States Index", type: :feature do
       expect(page.current_url).to eq("http://www.example.com/states/new")
       expect(page).to have_content("Add a New State Record")
     end
+
+    it "Next to every state there is a link to edit the state's info" do
+      visit "/states"
+
+      expect(page).to have_link("Edit", :href => "/states/#{@washington.id}/edit")
+      expect(page).to have_link("Edit", :href => "/states/#{@colorado.id}/edit")
+      expect(page).to have_link("Edit", :href => "/states/#{@california.id}/edit")
+    end
   end
 end
