@@ -15,10 +15,9 @@ class CitiesController < ApplicationController
   
   def update
     city = City.find(params[:id])
-    
     city.update(city_params)
-    
     city.save
+
     redirect_to "/cities/#{city.id}"
   end
 
