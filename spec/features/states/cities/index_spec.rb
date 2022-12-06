@@ -88,7 +88,7 @@ RSpec.describe "State's City Index", type: :feature do
 
      it "has a link 'Sort Cities by Alphabetical Order'" do
       visit "/states/#{@washington.id}/cities"
-      save_and_open_page
+      
       expect(page).to have_link("Sort Cities by Alphabetical Order")   
     end
 
@@ -100,7 +100,7 @@ RSpec.describe "State's City Index", type: :feature do
       it "When 'Sort Cities by Alphabetical Order' link is clicked the user sees cities in that order" do
         visit "/states/#{@washington.id}/cities"
         click_link "Sort Cities by Alphabetical Order"
-
+        
         expect(republic).to appear_before(seattle)
         expect(seattle).to appear_before(spokane)
         expect(spokane).to_not appear_before(republic)

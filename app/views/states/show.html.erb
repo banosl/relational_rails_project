@@ -13,6 +13,7 @@
 <a href="/states/<%= @state.id %>/edit">Update State</a>
 
 <h3> Cities </h3>
+<a href="/states/<%=@state.id %>/cities">View All Cities</a>
 <ul>
 <% @state.cities.each do |city| %>
     <li> <a href="/cities/<%= city.id %>"> <%= city.name %> </a> </li>

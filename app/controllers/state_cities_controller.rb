@@ -1,8 +1,15 @@
 class StateCitiesController < ApplicationController
   def index
+    sorted_alpha = params[:sort]
     @state = State.find(params[:state_id])
     @cities = @state.cities
+    @cities = @cities.order(name: :asc) if sorted_alpha == "alphabetical"
   end
+
+  # def sort_alphabetical
+  #   binding.pry
+  #   self.order(name: :asc)
+  # end
 
   def new
     @state = State.find(params[:state_id])
