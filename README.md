@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is an exercise in building a one to many relationship web page using Ruby on Rails. Both model and feature testing is implemented throughout the project to 100%. The relationship demonstrated is that of one state to many cities. With this page one can run the seed and view states, their attributes and associated cities; cities and their attributes. One can also add, edit, and delete both states and cities.
 
-Things you may want to cover:
+In order to run:
 
-* Ruby version
+Ruby version 2.7.4 and Rails 5.2.8.1 are needed
 
-* System dependencies
+A screenshot of the schema can be viewed below:
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
