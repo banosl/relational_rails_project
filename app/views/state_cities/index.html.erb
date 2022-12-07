@@ -1,10 +1,10 @@
 <h1><%= @state.name %> Cities</h1>
 <a href="/states">All States</a> | <a href="/cities">All Cities</a> | <%= link_to "Sort Cities by Alphabetical Order", "/states/#{@state.id}/cities?sort=alphabetical", method: :get %><br/>
 
-<br/><%= form_with url: "/states/#{@state.id}/cities?miles_square=over", method: :get, local: true do |form|%>
-<%= form.label :Mile_Squared %>
+<br/><%= form_with url: "/states/#{@state.id}/cities", method: :get, local: true do |form|%>
+<%= form.label :query, "Miles Squared" %>
 <%= form.text_field :miles_squared %>
-<%= form.submit 'Cities Bigger than This' %>
+<%= form.submit 'Cities bigger than this' %>
 <% end %>
 
 <% @cities.each do |city| %>
