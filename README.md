@@ -8,4 +8,4 @@ Ruby version 2.7.4 and Rails 5.2.8.1 are needed
 
 A screenshot of the schema can be viewed below:
 
-
+<img width="654" alt="Screen Shot 2022-12-06 at 5 54 31 PM" src="https://user-images.githubusercontent.com/111591731/206061431-661d4ade-c36b-4f17-a4d3-2066d70c4da2.png">
