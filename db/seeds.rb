@@ -58,6 +58,6 @@
   population: 1144, 
   owner_occupied_housing_unit_rate: 47.0, 
   form_of_gov: "Mayor-Council", 
-  size: 69.49, 
+  size: 1.421, 
   median_household_income: 32639, 
   public_transit: false)  

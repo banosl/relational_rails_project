@@ -131,13 +131,14 @@ RSpec.describe "State's City Index", type: :feature do
       visit "/states/#{@washington.id}/cities"
 
       expect(page).to have_field(:miles_squared)
-      expect(page).to have_button("Cities Bigger than This")
+      expect(page).to have_button("Cities bigger than this")
     end
 
-    xit "when a value is entered and the submit button is clicked the user is brought back to the current page with just the cities over that size" do
+    it "when a value is entered and the submit button is clicked the user is brought back to the current page with just the cities over that size" do
       visit "/states/#{@washington.id}/cities"
       fill_in :miles_squared, with: 70.0
-# binding.pry
+      click_button "Cities bigger than this"
+
       expect(page).to_not have_content(@spokane.name)
       expect(page).to_not have_content(@republic.name)
     end

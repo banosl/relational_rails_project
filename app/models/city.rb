@@ -8,4 +8,8 @@ class City < ApplicationRecord
   def self.cities_alphabetically
     self.order(:name)
   end
+
+  def self.city_size_query(miles_squared)
+    where("size > #{miles_squared}")
+  end
 end

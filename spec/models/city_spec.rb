@@ -28,7 +28,7 @@ RSpec.describe City, type: :model do
       population: 1144, 
       owner_occupied_housing_unit_rate: 47.0, 
       form_of_gov: "Mayor-Council", 
-      size: 69.49, 
+      size: 1.421, 
       median_household_income: 32639, 
       public_transit: false)
   end
@@ -67,5 +67,9 @@ RSpec.describe City, type: :model do
 
   it 'cities ordered alphabetically' do
     expect(City.cities_alphabetically).to eq([@republic, @seattle, @spokane])
+  end
+
+  it "cities limited by size based on query" do
+    expect(City.city_size_query(70)).to eq([@seattle]) 
   end
 end
